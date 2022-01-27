@@ -5,6 +5,9 @@
         [opened]="!isScreenSmall"
         [mode]="!isScreenSmall ? 'side' : 'over'"
     >
+        <mat-toolbar color="primary">
+            Courses
+        </mat-toolbar>
         <div *ngIf="!isScreenSmall; else smallScreen">
             <mat-nav-list>
                 <mat-accordion>
