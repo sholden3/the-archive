@@ -2,8 +2,7 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-
-const SMALL_WIDTH_BREAKPOINT = 720;
+import { ScreenSizeService } from 'src/app/services/screen-size/screen-size.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -15,8 +14,8 @@ export class SideNavComponent implements OnInit {
   public isScreenSmall: boolean | null;
 
   constructor(
-    private breakpointObserver: BreakpointObserver,
-    private router: Router
+    private router: Router,
+    private screenSizeService: ScreenSizeService
   ) { 
     this.isScreenSmall = null;
     this.sidenav = null;
@@ -25,10 +24,7 @@ export class SideNavComponent implements OnInit {
     @ViewChild(MatSidenav) sidenav: MatSidenav | null;
 
   ngOnInit(): void {
-    this.breakpointObserver
-      .observe([
-        `(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`
-      ])
+    this.screenSizeService.checkScreenSize()
       .subscribe((state: BreakpointState) => {
         this.isScreenSmall = state.matches;
       });

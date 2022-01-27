@@ -20,15 +20,17 @@
             </div>
         </div>
         <ng-template #smallScreen>
-            <div fxLayout="column" fxFlex fxLayoutAlign="start center">
-                <button mat-button color="accent">
-                    <mat-icon>first_page</mat-icon> Intro to CS
-                </button>
-            </div>
-            <div fxLayout="column" fxFlex fxLayoutAlign="end center">
-                <button mat-button color="accent">
-                    Intro to C <mat-icon>last_page</mat-icon>
-                </button>
+            <div fxLayout="column">
+                <div fxLayoutAlign="start center">
+                    <button mat-button color="accent">
+                        <mat-icon>first_page</mat-icon> Intro to CS
+                    </button>
+                </div>
+                <div fxLayoutAlign="start center">
+                    <button mat-button color="accent">
+                        Intro to C <mat-icon>last_page</mat-icon>
+                    </button>
+                </div>
             </div>
         </ng-template>
     </mat-card-actions>

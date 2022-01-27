@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { BreakpointState } from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
+import { ScreenSizeService } from 'src/app/services/screen-size/screen-size.service';
 
 @Component({
   selector: 'app-main-content',
@@ -7,13 +9,19 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MainContentComponent implements OnInit {
 
-  @Input() isScreenSmall: boolean | null;
+  public isScreenSmall: boolean | null;
 
-  constructor() { 
+  constructor(
+    private screenSizeService: ScreenSizeService
+  ) { 
     this.isScreenSmall = null;
   }
 
   ngOnInit(): void {
+    this.screenSizeService.checkScreenSize()
+      .subscribe((state: BreakpointState) => {
+        this.isScreenSmall = state.matches;
+      });
   }
 
 }
