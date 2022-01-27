@@ -1,1 +1,57 @@
-<p>side-nav works!</p>
+<mat-sidenav-container class="container">
+    <mat-sidenav
+        #sidenav
+        class="sidenav mat-elevation-z10"
+        [opened]="!isScreenSmall"
+        [mode]="!isScreenSmall ? 'side' : 'over'"
+    >
+        <div *ngIf="!isScreenSmall; else smallScreen">
+            <mat-nav-list>
+                <mat-accordion>
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title matTooltip="Intro to CS test">
+                                <div>
+                                    CS
+                                </div>
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-list-item matTooltip="First Item">
+                            Test
+                        </mat-list-item>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </mat-nav-list>
+        </div>
+    </mat-sidenav>
+
+    <ng-template #smallScreen>
+        <button mat-button>
+            <mat-icon>login</mat-icon>
+            Login
+        </button>
+        <button mat-button>
+            <mat-icon>add_circle_outline</mat-icon>
+            Signup
+        </button>
+        <mat-divider></mat-divider>
+
+        <mat-nav-list>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title matTooltip="Intro to CS test">
+                            <div>
+                                CS
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-list-item matTooltip="First Item">
+                        Test
+                    </mat-list-item>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-nav-list>
+    </ng-template>
+
+</mat-sidenav-container>

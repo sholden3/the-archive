@@ -1,0 +1,34 @@
+$maxWidth: 720px;
+
+.container {
+    flex: 1;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+.sidenav-content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.sidenav {
+    width: 240px;
+
+    @media (max-width: $maxWidth) {
+        width: 200px;
+    }
+}
+
+.mat-drawer-side {
+    border: none;
+}
+
+.wrapper {
+    margin: 50px;
+
+    @media (max-width: $maxWidth) {
+        margin: 10px 0 10px 0;
+    }
+}
