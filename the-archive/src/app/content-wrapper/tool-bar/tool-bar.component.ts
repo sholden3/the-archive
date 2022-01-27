@@ -7,9 +7,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ToolBarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
-  @Input() isScreenSmall = '';
+  @Input() isScreenSmall: boolean | null;
 
-  constructor() { }
+  constructor() { 
+    this.isScreenSmall = null;
+  }
 
   ngOnInit(): void {
   }

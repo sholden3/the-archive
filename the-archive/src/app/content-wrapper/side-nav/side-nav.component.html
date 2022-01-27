@@ -58,7 +58,7 @@
     </ng-template>
 
     <div class="sidenav-content">
-        <app-tool-bar></app-tool-bar>
+        <app-tool-bar (toggleSidenav)="sidenav.toggle()" [isScreenSmall]="!isScreenSmall"></app-tool-bar>
         <div class="wrapper">
             <router-outlet></router-outlet>
         </div>
