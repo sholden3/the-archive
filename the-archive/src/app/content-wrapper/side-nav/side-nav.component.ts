@@ -2,6 +2,9 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DirectoryItem } from 'src/app/models/directory-item/directory-item.model';
+import { DirectoryService } from 'src/app/services/directory/directory.service';
 import { ScreenSizeService } from 'src/app/services/screen-size/screen-size.service';
 
 @Component({
@@ -12,13 +15,16 @@ import { ScreenSizeService } from 'src/app/services/screen-size/screen-size.serv
 export class SideNavComponent implements OnInit {
 
   public isScreenSmall: boolean | null;
+  public directory: DirectoryItem[];
 
   constructor(
     private router: Router,
-    private screenSizeService: ScreenSizeService
+    private screenSizeService: ScreenSizeService,
+    private directoryService: DirectoryService
   ) { 
     this.isScreenSmall = null;
     this.sidenav = null;
+    this.directory = [];
   }
 
     @ViewChild(MatSidenav) sidenav: MatSidenav | null;
@@ -33,7 +39,13 @@ export class SideNavComponent implements OnInit {
       if (this.isScreenSmall) {
         this.sidenav!.close();
       }
-    })
+    });
+
+    this.directoryService.loadAll();
+    this.directoryService.directory
+      .subscribe((data: DirectoryItem[]) => {
+        this.directory = data;
+      });
   }
 
 }
