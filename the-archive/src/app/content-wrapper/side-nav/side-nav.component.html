@@ -11,7 +11,7 @@
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
                             <mat-panel-title matTooltip="Intro to CS test">
-                                <div>
+                                <div fxLayout="row" fxLayoutAlign="space-between center">
                                     CS
                                 </div>
                             </mat-panel-title>
@@ -41,7 +41,7 @@
                 <mat-expansion-panel>
                     <mat-expansion-panel-header>
                         <mat-panel-title matTooltip="Intro to CS test">
-                            <div>
+                            <div fxLayout="row" fxLayoutAlign="space-between center">
                                 CS
                             </div>
                         </mat-panel-title>
@@ -53,5 +53,12 @@
             </mat-accordion>
         </mat-nav-list>
     </ng-template>
+
+    <div class="sidenav-content">
+        <app-tool-bar></app-tool-bar>
+        <div class="wrapper">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
 
 </mat-sidenav-container>
