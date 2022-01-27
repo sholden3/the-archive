@@ -5,14 +5,14 @@ export class DirectoryItem {
     name: string;
     description: string;
     type: string;
-    children: DirectoryItem[] | null;
+    children: DirectorySubItem[] | null;
 
     constructor(
         id: string,
         name: string,
         description: string,
         type: string,
-        children: DirectoryItem[] | null
+        children: DirectorySubItem[] | null
     ) {
         this.id = id;
         this.name = name;
