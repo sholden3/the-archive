@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { SideNavComponent } from 'src/app/content-wrapper/side-nav/side-nav.component';
 import { Content } from 'src/app/models/content/content.model';
+import { ParagraphComponent } from 'src/app/ui-elements/basic-elements/paragraph/paragraph.component';
 import { ContentFactoryService } from '../content-factory/content-factory.service';
 
 @Injectable({
@@ -48,7 +49,14 @@ export class ContentService {
             devMode: false
           },
           [
-            
+            new Content(
+              this.contentFactory.returnComponent('paragraph'),
+              {
+                body: "Break The World, One Day At A Time",
+                devMode: true
+              },
+              []
+            )
           ]
         )
       ]

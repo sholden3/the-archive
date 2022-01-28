@@ -21,6 +21,9 @@ export class ContentFactoryService {
   }
 
   resolveComponent(component: Type<any>, viewContainerRef: ViewContainerRef, data: any[]) {
+    console.log(component);
+    console.log(viewContainerRef);
+    console.log(data);
     const entityComp = this.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainerRef.createComponent(entityComp);
     componentRef.instance.data = {componentRef: componentRef, containerRef: viewContainerRef, data: data};

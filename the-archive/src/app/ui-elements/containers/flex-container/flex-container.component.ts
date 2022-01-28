@@ -10,7 +10,7 @@ import { ContainerDirective } from '../../Directives/Container/container.directi
 })
 export class FlexContainerComponent implements OnInit {
 
-  @Input() data: Content | null;
+  @Input() data: any | null;
   direction: String | null;
   padding: String | null;
   layout: String | null;

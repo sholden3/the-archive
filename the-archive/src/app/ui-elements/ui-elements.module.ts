@@ -20,6 +20,9 @@ import { ParagraphComponent } from './basic-elements/paragraph/paragraph.compone
     MaterialModule,
     FormsModule,
     FlexLayoutModule
+  ],
+  exports: [
+    FlexContainerComponent
   ]
 })
 export class UiElementsModule { }

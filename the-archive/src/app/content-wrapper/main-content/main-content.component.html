@@ -1,4 +1,17 @@
-<mat-card>
+<mat-card class="mat-elevation-z10">
+    <mat-card-content>
+            <ng-template #recursiveList let-list>
+                <div *ngFor="let item of contentItems">
+                    <div *ngIf="item.children.length > 0">
+                        <app-flex-container [data]=item></app-flex-container>
+                    </div>
+                </div>
+            </ng-template>
+            <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: contentItems }"></ng-container>
+    </mat-card-content>
+</mat-card>
+
+<!-- <mat-card>
     <mat-card-header>
         <mat-card-title>Test</mat-card-title>
         <mat-card-subtitle>Test 2</mat-card-subtitle>
@@ -34,4 +47,4 @@
             </div>
         </ng-template>
     </mat-card-actions>
-</mat-card>
+</mat-card> -->
