@@ -15,7 +15,7 @@ import { ScreenSizeService } from 'src/app/services/screen-size/screen-size.serv
 export class SideNavComponent implements OnInit {
 
   public isScreenSmall: boolean | null;
-  public directory: DirectoryItem[];
+  public directory: Observable<DirectoryItem[]>;
 
   constructor(
     private router: Router,
@@ -24,7 +24,7 @@ export class SideNavComponent implements OnInit {
   ) { 
     this.isScreenSmall = null;
     this.sidenav = null;
-    this.directory = [];
+    this.directory = new Observable<DirectoryItem[]>();
   }
 
     @ViewChild(MatSidenav) sidenav: MatSidenav | null;
@@ -41,11 +41,9 @@ export class SideNavComponent implements OnInit {
       }
     });
 
+    this.directory = this.directoryService.directory;
     this.directoryService.loadAll();
-    this.directoryService.directory
-      .subscribe((data: DirectoryItem[]) => {
-        this.directory = data;
-      });
+
   }
 
 }
