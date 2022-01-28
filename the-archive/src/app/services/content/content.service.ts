@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { SideNavComponent } from 'src/app/content-wrapper/side-nav/side-nav.component';
 import { Content } from 'src/app/models/content/content.model';
+import { ContentFactoryService } from '../content-factory/content-factory.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class ContentService {
     content: Content[]
   };
 
-  constructor() { 
+  constructor(private contentFactory: ContentFactoryService) { 
     this.dataStore = { content: [] };
     this._content = new BehaviorSubject<Content[]>([]);
   }
@@ -39,12 +40,15 @@ export class ContentService {
       id: "dfs13g342",
       nodes: [
         new Content(
-          SideNavComponent,
+          this.contentFactory.returnComponent('container-flex'),
           {
-
+            dir: "column",
+            padding: 10,
+            layout: "center",
+            devMode: false
           },
           [
-
+            
           ]
         )
       ]

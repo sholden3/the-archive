@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Content } from 'src/app/models/content/content.model';
+import { ContentFactoryService } from 'src/app/services/content-factory/content-factory.service';
 import { ContainerDirective } from '../../Directives/Container/container.directive';
 
 @Component({
@@ -9,21 +10,33 @@ import { ContainerDirective } from '../../Directives/Container/container.directi
 })
 export class FlexContainerComponent implements OnInit {
 
-  @Input() entities: Content | null;
+  @Input() data: Content | null;
   direction: String | null;
   padding: String | null;
   layout: String | null;
 
   @ViewChild(ContainerDirective, {static: true}) appContainer!: ContainerDirective;
 
-  constructor() { 
-    this.entities = null;
+  constructor(private contentFactory: ContentFactoryService) { 
+    this.data = null;
     this.direction = null;
     this.padding = null;
     this.layout = null;
   }
 
   ngOnInit(): void {
+    this.loadComponent();
+  }
+
+  loadComponent() {
+    this.direction = this.data?.data.dir;
+    this.padding = this.data?.data.padding + "px";
+    this.layout = this.data?.data.layout;
+    const viewContainerRef = this.appContainer.viewContainerRef;
+    viewContainerRef.clear();
+    for(let item of this.data!.children) {
+      this.contentFactory.resolveComponent(item.component, viewContainerRef, item.data);
+    }
   }
 
 }

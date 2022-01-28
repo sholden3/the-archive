@@ -1,4 +1,5 @@
 import { ComponentFactoryResolver, Injectable, Type, ViewContainerRef } from '@angular/core';
+import { FlexContainerComponent } from 'src/app/ui-elements/containers/flex-container/flex-container.component';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ContentFactoryService {
   constructor(
       private componentFactoryResolver: ComponentFactoryResolver
     ) { 
-
+      this.cmps.set('container-flex', FlexContainerComponent);
   }
 
   returnComponent(componentType: string): Type<any> {
