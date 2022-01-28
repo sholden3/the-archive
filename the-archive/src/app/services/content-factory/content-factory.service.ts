@@ -1,4 +1,5 @@
 import { ComponentFactoryResolver, Injectable, Type, ViewContainerRef } from '@angular/core';
+import { CodeEditorComponent } from 'src/app/ui-elements/advance-elements/code-editor/code-editor.component';
 import { ParagraphComponent } from 'src/app/ui-elements/basic-elements/paragraph/paragraph.component';
 import { FlexContainerComponent } from 'src/app/ui-elements/containers/flex-container/flex-container.component';
 
@@ -14,6 +15,7 @@ export class ContentFactoryService {
     ) { 
       this.cmps.set('container-flex', FlexContainerComponent);
       this.cmps.set('paragraph', ParagraphComponent);
+      this.cmps.set('code-editor', CodeEditorComponent);
   }
 
   returnComponent(componentType: string): Type<any> {

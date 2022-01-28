@@ -1,4 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+pre {
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 0;
+    word-wrap: break-word;
+
+    code {
+        flex: 1;
+        line-height: 1.5em;
+        font-size: 14px;
+        min-height: 100%;
+        padding: 1em 1.2em;
+
+        &.hljs-line-numbers {
+        padding: 0;
+        }
+    }
+}
+
+/** Line numbers styles */
+.hljs {
+    margin: 0 1em;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    transition: border ease 1s;
+}
+
+.hljs-ln {
+    padding: 8px 0;
+
+    tr {
+        &:first-child td {
+            padding-top: 8px !important;
+        }
+
+        &:last-child td {
+            padding-bottom: 8px !important;
+        }
+    }
+}
+
+/* for block of numbers */
+td.hljs-ln-numbers {
+    user-select: none;
+    text-align: center;
+    border-right: 1px solid gray;
+    vertical-align: top;
+    padding-right: 8px !important;
+    padding-left: 8px !important;
+}
+
+/* for block of code */
+td.hljs-ln-code {
+    padding-left: 8px !important;
+}

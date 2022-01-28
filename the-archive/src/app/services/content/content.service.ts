@@ -56,6 +56,15 @@ export class ContentService {
                 devMode: true
               },
               []
+            ),
+            new Content(
+              this.contentFactory.returnComponent('code-editor'),
+              {
+                language: 'typescript',
+                code:`let test = 0;
+`
+              },
+              []
             )
           ]
         )
