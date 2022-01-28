@@ -5,13 +5,15 @@ import { MaterialModule } from '../modules/material/material.module';
 import { FormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ContainerDirective } from './Directives/Container/container.directive';
+import { ParagraphComponent } from './basic-elements/paragraph/paragraph.component';
 
 
 
 @NgModule({
   declarations: [
     FlexContainerComponent,
-    ContainerDirective
+    ContainerDirective,
+    ParagraphComponent
   ],
   imports: [
     CommonModule,

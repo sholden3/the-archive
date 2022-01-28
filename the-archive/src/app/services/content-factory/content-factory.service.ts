@@ -1,4 +1,5 @@
 import { ComponentFactoryResolver, Injectable, Type, ViewContainerRef } from '@angular/core';
+import { ParagraphComponent } from 'src/app/ui-elements/basic-elements/paragraph/paragraph.component';
 import { FlexContainerComponent } from 'src/app/ui-elements/containers/flex-container/flex-container.component';
 
 @Injectable({
@@ -12,6 +13,7 @@ export class ContentFactoryService {
       private componentFactoryResolver: ComponentFactoryResolver
     ) { 
       this.cmps.set('container-flex', FlexContainerComponent);
+      this.cmps.set('paragraph', ParagraphComponent);
   }
 
   returnComponent(componentType: string): Type<any> {
