@@ -50,6 +50,14 @@ export class ContentService {
           },
           [
             new Content(
+              this.contentFactory.returnComponent('h1'),
+              {
+                body: "Welcome",
+                devMode: false
+              },
+              []
+            ),
+            new Content(
               this.contentFactory.returnComponent('paragraph'),
               {
                 body: "Break The World, One Day At A Time",
@@ -65,6 +73,35 @@ export class ContentService {
 `
               },
               []
+            ),
+            new Content(
+              this.contentFactory.returnComponent('container-flex'),
+              {
+                dir: "row",
+                padding: 10,
+                layout: "center",
+                devMode: false
+              },
+              [
+                new Content(
+                  this.contentFactory.returnComponent('code-editor'),
+                  {
+                    language: 'typescript',
+                    code:`let test = 0;
+    `
+                  },
+                  []
+                ),
+                new Content(
+                  this.contentFactory.returnComponent('paragraph'),
+                  {
+                    
+                    body: 'typescript',
+                    devMode: false
+                  },
+                  []
+                )
+              ]
             )
           ]
         )

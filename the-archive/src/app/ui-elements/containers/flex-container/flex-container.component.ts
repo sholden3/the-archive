@@ -29,13 +29,16 @@ export class FlexContainerComponent implements OnInit {
   }
 
   loadComponent() {
+    console.log(this.data);
     this.direction = this.data?.data.dir;
     this.padding = this.data?.data.padding + "px";
     this.layout = this.data?.data.layout;
     const viewContainerRef = this.appContainer.viewContainerRef;
     viewContainerRef.clear();
-    for(let item of this.data!.children) {
-      this.contentFactory.resolveComponent(item.component, viewContainerRef, item.data);
+    if(this.data!.children) {
+      for(let item of this.data!.children) {
+        this.contentFactory.resolveComponent(item, item.component, viewContainerRef, item.data);
+      }
     }
   }
 

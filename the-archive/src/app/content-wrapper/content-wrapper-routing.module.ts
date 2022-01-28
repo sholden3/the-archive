@@ -6,6 +6,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 const routes: Routes = [
   {path: '', component: ContentWrapperComponent,
     children: [
+      {path: ':id', component: MainContentComponent},
       {path: '', component: MainContentComponent}
     ]
   }
