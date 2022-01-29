@@ -29,7 +29,6 @@ export class FlexContainerComponent implements OnInit {
   }
 
   loadComponent() {
-    console.log(this.data);
     this.direction = this.data?.data.dir;
     this.padding = this.data?.data.padding + "px";
     this.layout = this.data?.data.layout;

@@ -13,7 +13,9 @@
                 <div *ngFor="let dir of directory | async">
                     <div *ngIf="dir.type == 'text'">
                         <mat-list-item matTooltip="{{dir.description}}">
-                            {{dir.name}}
+                            <a matLine [routerLink]="[dir.id]">
+                                {{dir.name}}
+                            </a>
                         </mat-list-item>
                     </div>
                     <div *ngIf="dir.type == 'dropdown'">
@@ -28,7 +30,9 @@
                                 </mat-expansion-panel-header>
                                 <div *ngFor="let section of dir.children">
                                     <mat-list-item matTooltip="{{section.description}}">
-                                        {{section.itemNm}}
+                                        <a matLine [routerLink]="[section.id]">
+                                            {{section.itemNm}}
+                                        </a>
                                     </mat-list-item>
                                 </div>
                             </mat-expansion-panel>
@@ -51,20 +55,35 @@
         <mat-divider></mat-divider>
 
         <mat-nav-list>
-            <mat-accordion>
-                <mat-expansion-panel>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title matTooltip="Intro to CS test">
-                            <div fxLayout="row" fxLayoutAlign="space-between center">
-                                CS
-                            </div>
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <mat-list-item matTooltip="First Item">
-                        Test
+            <div *ngFor="let dir of directory | async">
+                <div *ngIf="dir.type == 'text'">
+                    <mat-list-item matTooltip="{{dir.description}}">
+                        <a matLine [routerLink]="[dir.id]">
+                            {{dir.name}}
+                        </a>
                     </mat-list-item>
-                </mat-expansion-panel>
-            </mat-accordion>
+                </div>
+                <div *ngIf="dir.type == 'dropdown'">
+                    <mat-accordion>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title matTooltip="{{dir.description}}">
+                                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                                        {{dir.name}}
+                                    </div>
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div *ngFor="let section of dir.children">
+                                <mat-list-item matTooltip="{{section.description}}">
+                                    <a matLine [routerLink]="[section.id]">
+                                        {{section.itemNm}}
+                                    </a>
+                                </mat-list-item>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </div>
         </mat-nav-list>
     </ng-template>
 
