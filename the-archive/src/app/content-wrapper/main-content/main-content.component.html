@@ -9,4 +9,32 @@
             </ng-template>
             <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: contentItems }"></ng-container>
     </mat-card-content>
+    <!-- <mat-card-actions>
+        <div *ngIf="!isScreenSmall; else smallScreen">
+            <div fxFlex fxLayoutAlign="start center">
+                <button mat-button color="accent">
+                    <mat-icon>first_page</mat-icon> Intro to CS
+                </button>
+            </div>
+            <div fxFlex fxLayoutAlign="end center">
+                <button mat-button color="accent">
+                    Intro to C <mat-icon>last_page</mat-icon>
+                </button>
+            </div>
+        </div>
+        <ng-template #smallScreen>
+            <div fxLayout="column">
+                <div fxLayoutAlign="start center">
+                    <button mat-button color="accent">
+                        <mat-icon>first_page</mat-icon> Intro to CS
+                    </button>
+                </div>
+                <div fxLayoutAlign="start center">
+                    <button mat-button color="accent">
+                        Intro to C <mat-icon>last_page</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+    </mat-card-actions> -->
 </mat-card>

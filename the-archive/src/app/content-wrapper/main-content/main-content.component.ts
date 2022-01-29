@@ -15,6 +15,8 @@ export class MainContentComponent implements OnInit {
 
   public isScreenSmall: boolean | null;
   id: string | null;
+  prevNode: any;
+  nextNode: any;
 
   content: Observable<Content[]> | null | undefined;
   contentItems: Content[];
@@ -29,6 +31,8 @@ export class MainContentComponent implements OnInit {
     this.content = null;
     this.contentItems = [];
     this.id = null;
+    this.prevNode = null
+    this.nextNode = null;
   }
 
   ngOnInit(): void {

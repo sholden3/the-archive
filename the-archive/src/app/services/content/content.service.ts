@@ -1,6 +1,10 @@
 import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { SideNavComponent } from 'src/app/content-wrapper/side-nav/side-nav.component';
+import { AboutMe } from 'src/app/mock-data/content/about-me';
+import { AboutTheSite } from 'src/app/mock-data/content/about-the-site';
+import { Foreword } from 'src/app/mock-data/content/intro-to-cs/foreword';
+import { IntroToCsAndComputers } from 'src/app/mock-data/content/intro-to-cs/intro-to-cs-and-computers';
 import { Content } from 'src/app/models/content/content.model';
 import { ParagraphComponent } from 'src/app/ui-elements/basic-elements/paragraph/paragraph.component';
 import { ContentFactoryService } from '../content-factory/content-factory.service';
@@ -37,46 +41,9 @@ export class ContentService {
   }
 
   private contentData = [
-    {
-      id: "41asdr",
-      nodes: [
-        new Content(
-          this.contentFactory.returnComponent('container-flex'),
-          {
-            dir: "row",
-            padding: 10,
-            layout: "center",
-            devMode: false
-          },
-          [
-            new Content(
-              this.contentFactory.returnComponent('h1'),
-              {
-                body: "About Me"
-              },
-              []
-            )
-          ]
-        ),
-        new Content(
-          this.contentFactory.returnComponent('container-flex'),
-          {
-            dir: "row",
-            padding: 10,
-            layout: "center",
-            devMode: false
-          },
-          [
-            new Content(
-              this.contentFactory.returnComponent('h1'),
-              {
-                body: "About Me"
-              },
-              []
-            )
-          ]
-        )
-      ]
-    }
+    new AboutMe(this.contentFactory).data,
+    new AboutTheSite(this.contentFactory).data,
+    new Foreword(this.contentFactory).data,
+    new IntroToCsAndComputers(this.contentFactory).data
   ]
 }
