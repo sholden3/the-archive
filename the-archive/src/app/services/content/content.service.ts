@@ -38,12 +38,12 @@ export class ContentService {
 
   private contentData = [
     {
-      id: "dfs13g342",
+      id: "41asdr",
       nodes: [
         new Content(
           this.contentFactory.returnComponent('container-flex'),
           {
-            dir: "column",
+            dir: "row",
             padding: 10,
             layout: "center",
             devMode: false
@@ -52,56 +52,27 @@ export class ContentService {
             new Content(
               this.contentFactory.returnComponent('h1'),
               {
-                body: "Welcome",
-                devMode: false
+                body: "About Me"
               },
               []
-            ),
+            )
+          ]
+        ),
+        new Content(
+          this.contentFactory.returnComponent('container-flex'),
+          {
+            dir: "row",
+            padding: 10,
+            layout: "center",
+            devMode: false
+          },
+          [
             new Content(
-              this.contentFactory.returnComponent('paragraph'),
+              this.contentFactory.returnComponent('h1'),
               {
-                body: "Break The World, One Day At A Time",
-                devMode: true
+                body: "About Me"
               },
               []
-            ),
-            new Content(
-              this.contentFactory.returnComponent('code-editor'),
-              {
-                language: 'typescript',
-                code:`let test = 0;
-`
-              },
-              []
-            ),
-            new Content(
-              this.contentFactory.returnComponent('container-flex'),
-              {
-                dir: "row",
-                padding: 10,
-                layout: "center",
-                devMode: false
-              },
-              [
-                new Content(
-                  this.contentFactory.returnComponent('code-editor'),
-                  {
-                    language: 'typescript',
-                    code:`let test = 0;
-    `
-                  },
-                  []
-                ),
-                new Content(
-                  this.contentFactory.returnComponent('paragraph'),
-                  {
-                    
-                    body: 'typescript',
-                    devMode: false
-                  },
-                  []
-                )
-              ]
             )
           ]
         )

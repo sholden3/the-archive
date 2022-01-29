@@ -48,7 +48,7 @@ export class MainContentComponent implements OnInit {
           this.router.navigate(['']);
         }
       } else {
-        this.contentService.loadAll("dfs13g342");
+        this.router.navigate(['41asdr']);
       }
     });
     this.content.subscribe(data => {
