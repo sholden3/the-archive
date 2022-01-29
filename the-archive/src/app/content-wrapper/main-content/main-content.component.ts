@@ -36,13 +36,16 @@ export class MainContentComponent implements OnInit {
         this.isScreenSmall = state.matches;
       });
 
+    this.content = this.contentService.content;
+
     this.route.params.subscribe((params: Params) => {
       this.id = params['id'];
-      console.log(this.id);
+      if(this.id) {
+        this.contentService.loadAll(this.id);
+      } else {
+        this.contentService.loadAll("dfs13g342");
+      }
     });
-    
-    this.content = this.contentService.content;
-    this.contentService.loadAll("dfs13g342");
     this.content.subscribe(data => {
       this.contentItems = data;
       console.log(this.contentItems);
