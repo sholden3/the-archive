@@ -3,6 +3,7 @@ import { CodeEditorComponent } from 'src/app/ui-elements/advance-elements/code-e
 import { HeaderH1Component } from 'src/app/ui-elements/basic-elements/header-h1/header-h1.component';
 import { HeaderH2Component } from 'src/app/ui-elements/basic-elements/header-h2/header-h2.component';
 import { HeaderH3Component } from 'src/app/ui-elements/basic-elements/header-h3/header-h3.component';
+import { ListComponent } from 'src/app/ui-elements/basic-elements/list/list.component';
 import { ParagraphComponent } from 'src/app/ui-elements/basic-elements/paragraph/paragraph.component';
 import { FlexContainerComponent } from 'src/app/ui-elements/containers/flex-container/flex-container.component';
 
@@ -22,6 +23,7 @@ export class ContentFactoryService {
       this.cmps.set('h1', HeaderH1Component);
       this.cmps.set('h2', HeaderH2Component);
       this.cmps.set('h3', HeaderH3Component);
+      this.cmps.set('list', ListComponent);
   }
 
   returnComponent(componentType: string): Type<any> {

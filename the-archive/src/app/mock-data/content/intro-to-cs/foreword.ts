@@ -61,7 +61,15 @@ export class Foreword {
                     new Content(
                         this.contentFactory.returnComponent('paragraph'),
                         {
-                            body: "Currently, this will flow into the following path:",
+                            body: "Remember, don't give up on trying to learn. If you put the time into it, you will come away with a unique and cool skill set.",
+                            devMode: false
+                        },
+                        []
+                    ),
+                    new Content(
+                        this.contentFactory.returnComponent('paragraph'),
+                        {
+                            body: "Now, let's go ahead and get to it!",
                             devMode: false
                         },
                         []

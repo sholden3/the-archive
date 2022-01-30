@@ -11,6 +11,7 @@ import { HighlightModule } from 'ngx-highlightjs';
 import { HeaderH1Component } from './basic-elements/header-h1/header-h1.component';
 import { HeaderH2Component } from './basic-elements/header-h2/header-h2.component';
 import { HeaderH3Component } from './basic-elements/header-h3/header-h3.component';
+import { ListComponent } from './basic-elements/list/list.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HeaderH3Component } from './basic-elements/header-h3/header-h3.componen
     CodeEditorComponent,
     HeaderH1Component,
     HeaderH2Component,
-    HeaderH3Component
+    HeaderH3Component,
+    ListComponent
   ],
   imports: [
     CommonModule,
