@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/content/content.model';
 import { ContentService } from 'src/app/services/content/content.service';
 import { ScreenSizeService } from 'src/app/services/screen-size/screen-size.service';
+import { TestService } from 'src/app/services/test/test.service';
 
 @Component({
   selector: 'app-main-content',
@@ -25,7 +26,8 @@ export class MainContentComponent implements OnInit {
     private screenSizeService: ScreenSizeService,
     private contentService: ContentService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private test: TestService
   ) { 
     this.isScreenSmall = null;
     this.content = null;
@@ -36,6 +38,9 @@ export class MainContentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Testing Controller functionality
+    this.test.getResource();
+
     this.screenSizeService.checkScreenSize()
       .subscribe((state: BreakpointState) => {
         this.isScreenSmall = state.matches;
