@@ -1,0 +1,21 @@
+<div *ngIf="isAuthenticated && userFullName">
+    Welcome {{userFullName}}!
+    <button 
+        mat-button 
+        class="action-btn"
+        (click)="logout()"
+    >
+        <mat-icon>logout</mat-icon>
+        Logout
+    </button>
+</div>
+<div *ngIf="!isAuthenticated">
+    <button 
+        mat-button 
+        class="action-btn"
+        [routerLink]="['/login']"
+    >
+        <mat-icon>login</mat-icon>
+        Login
+    </button>
+</div>

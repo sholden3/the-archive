@@ -32,9 +32,12 @@
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/@okta/okta-signin-widget/dist/css/okta-sign-in.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/@okta/okta-signin-widget/dist/js/okta-sign-in.min.js"
+            ]
           },
           "configurations": {
             "production": {

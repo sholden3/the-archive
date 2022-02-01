@@ -6,6 +6,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs'
+import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
+import config from './config/config';
+import { Router } from '@angular/router';
+import { OktaAuth } from '@okta/okta-auth-js';
+
+const oktaConfig = Object.assign({
+  onAuthRequired: (injector: any) => {
+    const router = injector.get(Router);
+
+    // Redirect the user to your custom login page
+    router.navigate(['/login']);
+  }
+}, config);
+
+const oktaAuth = new OktaAuth(oktaConfig)
 
 @NgModule({
   declarations: [
@@ -16,9 +31,14 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs'
     AppRoutingModule,
     BrowserAnimationsModule,
     HighlightModule,
-    HttpClientModule
+    HttpClientModule,
+    OktaAuthModule
   ],
   providers: [
+    {
+      provide: OKTA_CONFIG,
+      useValue: {oktaAuth}
+    },
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {

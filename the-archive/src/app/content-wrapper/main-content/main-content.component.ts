@@ -39,7 +39,7 @@ export class MainContentComponent implements OnInit {
 
   ngOnInit(): void {
     // Testing Controller functionality
-    this.test.getResource();
+    //this.test.getResource();
 
     this.screenSizeService.checkScreenSize()
       .subscribe((state: BreakpointState) => {
