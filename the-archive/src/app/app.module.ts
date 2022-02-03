@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { OktaAuth } from '@okta/okta-auth-js';
 
 const oktaConfig = Object.assign({
-  onAuthRequired: (injector: any) => {
+  onAuthRequired: (oktaAuth: any, injector: any) => { // Need to add one more param to handle Activated link middleware
     const router = injector.get(Router);
 
     // Redirect the user to your custom login page

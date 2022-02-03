@@ -10,6 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { UiElementsModule } from '../ui-elements/ui-elements.module';
 import { ComponentsModule } from '../components/components.module';
+import { UiBuilderModule } from '../ui-builder/ui-builder.module';
 
 
 
@@ -27,7 +28,8 @@ import { ComponentsModule } from '../components/components.module';
     FormsModule,
     FlexLayoutModule,
     UiElementsModule,
-    ComponentsModule
+    ComponentsModule,
+    UiBuilderModule
   ]
 })
 export class ContentWrapperModule { }

@@ -13,7 +13,11 @@
                 <div *ngFor="let dir of directory | async">
                     <div *ngIf="dir.type == 'text'">
                         <mat-list-item matTooltip="{{dir.description}}">
-                            <a matLine [routerLink]="[dir.id]">
+                            <a 
+                                matLine 
+                                [routerLink]="['/section',dir.id]"
+                                [queryParams]="{state: 'sections'}"
+                            >
                                 {{dir.name}}
                             </a>
                         </mat-list-item>
@@ -30,7 +34,11 @@
                                 </mat-expansion-panel-header>
                                 <div *ngFor="let section of dir.children">
                                     <mat-list-item matTooltip="{{section.description}}">
-                                        <a matLine [routerLink]="[section.id]">
+                                        <a 
+                                            matLine 
+                                            [routerLink]="['/course',section.id]"
+                                            [queryParams]="{state: 'sections'}"
+                                            >
                                             {{section.itemNm}}
                                         </a>
                                     </mat-list-item>
@@ -44,21 +52,18 @@
     </mat-sidenav>
 
     <ng-template #smallScreen>
-        <button mat-button>
-            <mat-icon>login</mat-icon>
-            Login
-        </button>
-        <button mat-button>
-            <mat-icon>add_circle_outline</mat-icon>
-            Signup
-        </button>
+        <app-login-status></app-login-status>
         <mat-divider></mat-divider>
 
         <mat-nav-list>
             <div *ngFor="let dir of directory | async">
                 <div *ngIf="dir.type == 'text'">
                     <mat-list-item matTooltip="{{dir.description}}">
-                        <a matLine [routerLink]="[dir.id]">
+                        <a 
+                            matLine 
+                            [routerLink]="['/sectiion',dir.id]"
+                            [queryParams]="{state: 'sections'}"
+                        >
                             {{dir.name}}
                         </a>
                     </mat-list-item>
@@ -75,7 +80,11 @@
                             </mat-expansion-panel-header>
                             <div *ngFor="let section of dir.children">
                                 <mat-list-item matTooltip="{{section.description}}">
-                                    <a matLine [routerLink]="[section.id]">
+                                    <a 
+                                        matLine 
+                                        [routerLink]="['/course',section.id]"
+                                        [queryParams]="{state: 'sections'}"
+                                    >
                                         {{section.itemNm}}
                                     </a>
                                 </mat-list-item>
