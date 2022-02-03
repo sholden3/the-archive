@@ -14,9 +14,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.stateService.setState('portfolio');
-    this.stateService.getState().subscribe(data => {
-      console.log(data);
-    })
   }
 
 }

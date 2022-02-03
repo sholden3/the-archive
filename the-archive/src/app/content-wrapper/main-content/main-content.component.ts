@@ -15,54 +15,23 @@ import { TestService } from 'src/app/services/test/test.service';
 export class MainContentComponent implements OnInit {
 
   public isScreenSmall: boolean | null;
-  id: string | null;
   prevNode: any;
   nextNode: any;
 
-  content: Observable<Content[]> | null | undefined;
-  contentItems: Content[];
-
   constructor(
     private screenSizeService: ScreenSizeService,
-    private contentService: ContentService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private test: TestService
+    private contentService: ContentService
   ) { 
     this.isScreenSmall = null;
-    this.content = null;
-    this.contentItems = [];
-    this.id = null;
     this.prevNode = null
     this.nextNode = null;
   }
 
   ngOnInit(): void {
-    // Testing Controller functionality
-    //this.test.getResource();
-
     this.screenSizeService.checkScreenSize()
       .subscribe((state: BreakpointState) => {
         this.isScreenSmall = state.matches;
       });
-
-    this.content = this.contentService.content;
-
-    this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
-      if(this.id) {
-        try {
-          this.contentService.loadAll(this.id);
-        } catch (error) {
-          this.router.navigate(['']);
-        }
-      } else {
-        this.router.navigate(['/section/41asdr']);
-      }
-    });
-    this.content.subscribe(data => {
-      this.contentItems = data;
-    })
   }
 
 }

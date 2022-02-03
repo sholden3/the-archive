@@ -4,8 +4,9 @@ import { CoursesComponent } from './courses.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {path: 'courses/:id', component: CoursesComponent},// MainContentComponent},
-  {path: '', component: CoursesComponent}
+  {path: '', component: CoursesComponent, children: [
+    {path: ':id', component: CoursesComponent}
+  ]}
 ];
 
 @NgModule({

@@ -8,7 +8,7 @@
             </mat-panel-title>
         </mat-expansion-panel-header>
         <div *ngFor="let child of data.data.children">
-            <mat-list-item matTooltip="child.description">
+            <mat-list-item matTooltip="{{child.description}}">
                 <a
                     matLine
                     [routerLink]="[child.link, child.id]"

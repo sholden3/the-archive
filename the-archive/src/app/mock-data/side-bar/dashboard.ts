@@ -8,14 +8,22 @@ export class Dashboard {
         state: 'dashboard',
         nodes: [
             new Content(
-                this.contentFactory.returnComponent('single-link'),
+                this.contentFactory.returnComponent('nav-list'),
                 {
-                    link: 'dashboard',
-                    id: 'sdf32424wdf',
-                    name: 'Config',
-                    description: 'Our configuration'
+
                 },
-                []
+                [
+                    new Content(
+                        this.contentFactory.returnComponent('single-link'),
+                        {
+                            link: 'dashboard',
+                            id: '3424123',
+                            name: 'Plugins',
+                            description: 'Our plugins'
+                        },
+                        []
+                    )
+                ]
             )
         ]
     }

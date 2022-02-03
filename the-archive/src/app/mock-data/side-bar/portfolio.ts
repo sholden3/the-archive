@@ -8,14 +8,22 @@ export class Portfolio {
         state: 'portfolio',
         nodes: [
             new Content(
-                this.contentFactory.returnComponent('single-link'),
+                this.contentFactory.returnComponent('nav-list'),
                 {
-                    link: 'portfolio',
-                    id: '3424123',
-                    name: 'About Me',
-                    description: 'A little about me.'
+
                 },
-                []
+                [
+                    new Content(
+                        this.contentFactory.returnComponent('single-link'),
+                        {
+                            link: 'portfolio',
+                            id: '3424123',
+                            name: 'About me',
+                            description: 'A little about me.'
+                        },
+                        []
+                    )
+                ]
             )
         ]
     }

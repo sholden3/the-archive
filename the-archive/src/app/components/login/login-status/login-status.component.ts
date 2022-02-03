@@ -26,7 +26,6 @@ export class LoginStatusComponent implements OnInit {
     this.siteState.getState().subscribe(
       (state) => {
         this.state = state;
-        console.log(this.state);
       }
     )
     this.authStateService.authState$.subscribe(

@@ -18,11 +18,27 @@ export class Courses {
                         {
                             link: 'courses',
                             id: '3424123',
-                            name: 'Intro To Cs',
-                            description: 'A little about CS.'
+                            name: 'Foreword',
+                            description: 'A quick little thing for us to touch on.'
                         },
                         []
-                    )
+                    ),
+                    new Content(
+                        this.contentFactory.returnComponent('dropdown-links'),
+                        {
+                            name: 'Intro To Cs',
+                            description: 'A little about CS.',
+                            children: [
+                                {
+                                    link: 'courses',
+                                    id: '34fdf2',
+                                    name: 'Our first deep dive',
+                                    description: "Our first deep dive into CS."
+                                }
+                            ]
+                        },
+                        []
+                    ),
                 ]
             )
         ]
