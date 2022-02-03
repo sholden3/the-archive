@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { SiteStateService } from '../services/site-state/site-state.service';
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  selector: 'app-portfolio',
+  templateUrl: './portfolio.component.html',
+  styleUrls: ['./portfolio.component.scss']
 })
-export class CoursesComponent implements OnInit {
+export class PortfolioComponent implements OnInit {
 
   constructor(private siteState: SiteStateService) { }
 
   ngOnInit(): void {
-    this.siteState.setState("courses");
+    this.siteState.setState("portfolio");
   }
 
 }

@@ -11,11 +11,10 @@ const routes: Routes = [
   {path: '', component: ContentWrapperComponent,
     children: [
       {path: 'dashboard', loadChildren: () => import('../ui-builder/ui-builder.module').then(m => m.UiBuilderModule)},
-      {path: 'section/:id', component: MainContentComponent},
-      {path: 'course/:id', component: MainContentComponent},
+      {path: 'portfolio', loadChildren: () => import('../portfolio/portfolio.module').then(m => m.PortfolioModule)},
+      {path: 'courses', loadChildren: () => import('../courses/courses.module').then(m => m.CoursesModule)},
       {path: 'login', component: LoginComponent},
       {path: 'login/callback', component: OktaCallbackComponent}, // Once user is authenticated, they are redirected to our app.
-      {path: '', redirectTo: 'section/', pathMatch: 'full'}
     ]
   },
 ]

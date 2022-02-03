@@ -12,7 +12,11 @@ import { HeaderH1Component } from './basic-elements/header-h1/header-h1.componen
 import { HeaderH2Component } from './basic-elements/header-h2/header-h2.component';
 import { HeaderH3Component } from './basic-elements/header-h3/header-h3.component';
 import { ListComponent } from './basic-elements/list/list.component';
-
+import { SingleLinkComponent } from './side-nav/single-link/single-link.component';
+import { RouterModule } from '@angular/router';
+import { DropdownLinksComponent } from './side-nav/dropdown-links/dropdown-links.component';
+import { ListContainerComponent } from './side-nav/list-container/list-container.component';
+import { OverlayModule } from "@angular/cdk/overlay";
 
 @NgModule({
   declarations: [
@@ -23,7 +27,10 @@ import { ListComponent } from './basic-elements/list/list.component';
     HeaderH1Component,
     HeaderH2Component,
     HeaderH3Component,
-    ListComponent
+    ListComponent,
+    SingleLinkComponent,
+    DropdownLinksComponent,
+    ListContainerComponent
   ],
   imports: [
     CommonModule,
@@ -31,10 +38,13 @@ import { ListComponent } from './basic-elements/list/list.component';
     FormsModule,
     FlexLayoutModule,
     HighlightModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule,
+    OverlayModule
   ],
   exports: [
-    FlexContainerComponent
+    FlexContainerComponent,
+    ListContainerComponent
   ]
 })
 export class UiElementsModule { }

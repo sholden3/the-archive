@@ -1,0 +1,8 @@
+<mat-list-item matTooltip="{{data.data.description}}">
+    <a
+        matLine
+        [routerLink]="[data.data.link, data.data.id]"
+    >
+        {{data.data.name}}
+    </a>
+</mat-list-item>

@@ -1,4 +1,4 @@
-import { ComponentFactoryResolver, Injectable, Type, ViewContainerRef } from '@angular/core';
+import { Compiler, ComponentFactoryResolver, Injectable, Type, ViewContainerRef } from '@angular/core';
 import { CodeEditorComponent } from 'src/app/ui-elements/advance-elements/code-editor/code-editor.component';
 import { HeaderH1Component } from 'src/app/ui-elements/basic-elements/header-h1/header-h1.component';
 import { HeaderH2Component } from 'src/app/ui-elements/basic-elements/header-h2/header-h2.component';
@@ -6,6 +6,10 @@ import { HeaderH3Component } from 'src/app/ui-elements/basic-elements/header-h3/
 import { ListComponent } from 'src/app/ui-elements/basic-elements/list/list.component';
 import { ParagraphComponent } from 'src/app/ui-elements/basic-elements/paragraph/paragraph.component';
 import { FlexContainerComponent } from 'src/app/ui-elements/containers/flex-container/flex-container.component';
+import { DropdownLinksComponent } from 'src/app/ui-elements/side-nav/dropdown-links/dropdown-links.component';
+import { ListContainerComponent } from 'src/app/ui-elements/side-nav/list-container/list-container.component';
+import { SingleLinkComponent } from 'src/app/ui-elements/side-nav/single-link/single-link.component';
+import { UiElementsModule } from 'src/app/ui-elements/ui-elements.module';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +19,8 @@ export class ContentFactoryService {
   cmps: Map<string, Type<any>> = new Map();
 
   constructor(
-      private componentFactoryResolver: ComponentFactoryResolver
+      private componentFactoryResolver: ComponentFactoryResolver,
+      private compiler: Compiler
     ) { 
       this.cmps.set('container-flex', FlexContainerComponent);
       this.cmps.set('paragraph', ParagraphComponent);
@@ -24,6 +29,9 @@ export class ContentFactoryService {
       this.cmps.set('h2', HeaderH2Component);
       this.cmps.set('h3', HeaderH3Component);
       this.cmps.set('list', ListComponent);
+      this.cmps.set('single-link', SingleLinkComponent);
+      this.cmps.set('dropdown-links', DropdownLinksComponent);
+      this.cmps.set('nav-list', ListContainerComponent);
   }
 
   returnComponent(componentType: string): Type<any> {
@@ -31,8 +39,15 @@ export class ContentFactoryService {
   }
 
   resolveComponent(content: any, component: Type<any>, viewContainerRef: ViewContainerRef, data: any[]) {
-    const entityComp = this.componentFactoryResolver.resolveComponentFactory(component);
-    const componentRef = viewContainerRef.createComponent(entityComp);
-    componentRef.instance.data = content
+    const ngModuleFactory = this.compiler.compileModuleSync(UiElementsModule);
+    const ngModule = ngModuleFactory.create(viewContainerRef.injector);
+    const factory =ngModule.componentFactoryResolver.resolveComponentFactory(component);
+    const componentRef = viewContainerRef.createComponent(factory);
+    componentRef.instance.data = content;
+    // const entityComp = this.componentFactoryResolver.resolveComponentFactory(component);
+    // console.log(entityComp);
+    // const componentRef = viewContainerRef.createComponent(entityComp);
+    // console.log(componentRef);
+    // componentRef.instance.data = content
   }
 }

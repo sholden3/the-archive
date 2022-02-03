@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { UiElementsModule } from '../ui-elements/ui-elements.module';
 import { ComponentsModule } from '../components/components.module';
 import { UiBuilderModule } from '../ui-builder/ui-builder.module';
+import { PortfolioModule } from '../portfolio/portfolio.module';
+import { CoursesModule } from '../courses/courses.module';
 
 
 
@@ -29,7 +31,9 @@ import { UiBuilderModule } from '../ui-builder/ui-builder.module';
     FlexLayoutModule,
     UiElementsModule,
     ComponentsModule,
-    UiBuilderModule
+    UiBuilderModule,
+    PortfolioModule,
+    CoursesModule
   ]
 })
 export class ContentWrapperModule { }

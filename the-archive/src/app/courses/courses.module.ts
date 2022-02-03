@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SideNavContentComponent } from './side-nav-content/side-nav-content.component';
 import { CoursesComponent } from './courses.component';
+import { CoursesRoutingModule } from './courses-routing.module';
 
 
 
 @NgModule({
   declarations: [
-    SideNavContentComponent,
     CoursesComponent
   ],
   imports: [
-    CommonModule
+    CoursesRoutingModule
+  ],
+  exports: [
+    CoursesComponent
   ]
 })
 export class CoursesModule { }

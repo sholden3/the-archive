@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SiteStateService } from '../services/site-state/site-state.service';
 
 @Component({
   selector: 'app-ui-builder',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UiBuilderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private siteState: SiteStateService) { }
 
   ngOnInit(): void {
-    console.log("site-manager");
+    this.siteState.setState("dashboard");
   }
 
 }

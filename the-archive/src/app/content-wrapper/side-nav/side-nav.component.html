@@ -5,96 +5,17 @@
         [opened]="!isScreenSmall"
         [mode]="!isScreenSmall ? 'side' : 'over'"
     >
-        <mat-toolbar color="primary">
-            Courses
-        </mat-toolbar>
-        <div *ngIf="!isScreenSmall; else smallScreen">
+        <ng-template #recursiveList let-list>
             <mat-nav-list>
-                <div *ngFor="let dir of directory | async">
-                    <div *ngIf="dir.type == 'text'">
-                        <mat-list-item matTooltip="{{dir.description}}">
-                            <a 
-                                matLine 
-                                [routerLink]="['/section',dir.id]"
-                                [queryParams]="{state: 'sections'}"
-                            >
-                                {{dir.name}}
-                            </a>
-                        </mat-list-item>
+                <div *ngFor="let item of directory">
+                    <div *ngIf="item.children.length > 0">
+                        <app-list-container [data]=item></app-list-container>
                     </div>
-                    <div *ngIf="dir.type == 'dropdown'">
-                        <mat-accordion>
-                            <mat-expansion-panel>
-                                <mat-expansion-panel-header>
-                                    <mat-panel-title matTooltip="{{dir.description}}">
-                                        <div fxLayout="row" fxLayoutAlign="space-between center">
-                                            {{dir.name}}
-                                        </div>
-                                    </mat-panel-title>
-                                </mat-expansion-panel-header>
-                                <div *ngFor="let section of dir.children">
-                                    <mat-list-item matTooltip="{{section.description}}">
-                                        <a 
-                                            matLine 
-                                            [routerLink]="['/course',section.id]"
-                                            [queryParams]="{state: 'sections'}"
-                                            >
-                                            {{section.itemNm}}
-                                        </a>
-                                    </mat-list-item>
-                                </div>
-                            </mat-expansion-panel>
-                        </mat-accordion>
-                    </div>
-                </div>
+                </div>   
             </mat-nav-list>
-        </div>
+        </ng-template>
+        <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: directory }"></ng-container>
     </mat-sidenav>
-
-    <ng-template #smallScreen>
-        <app-login-status></app-login-status>
-        <mat-divider></mat-divider>
-
-        <mat-nav-list>
-            <div *ngFor="let dir of directory | async">
-                <div *ngIf="dir.type == 'text'">
-                    <mat-list-item matTooltip="{{dir.description}}">
-                        <a 
-                            matLine 
-                            [routerLink]="['/sectiion',dir.id]"
-                            [queryParams]="{state: 'sections'}"
-                        >
-                            {{dir.name}}
-                        </a>
-                    </mat-list-item>
-                </div>
-                <div *ngIf="dir.type == 'dropdown'">
-                    <mat-accordion>
-                        <mat-expansion-panel>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title matTooltip="{{dir.description}}">
-                                    <div fxLayout="row" fxLayoutAlign="space-between center">
-                                        {{dir.name}}
-                                    </div>
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div *ngFor="let section of dir.children">
-                                <mat-list-item matTooltip="{{section.description}}">
-                                    <a 
-                                        matLine 
-                                        [routerLink]="['/course',section.id]"
-                                        [queryParams]="{state: 'sections'}"
-                                    >
-                                        {{section.itemNm}}
-                                    </a>
-                                </mat-list-item>
-                            </div>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </div>
-            </div>
-        </mat-nav-list>
-    </ng-template>
 
     <div class="sidenav-content">
         <app-tool-bar (toggleSidenav)="sidenav.toggle()" [isScreenSmall]="!isScreenSmall"></app-tool-bar>

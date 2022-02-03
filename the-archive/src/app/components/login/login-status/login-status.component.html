@@ -8,15 +8,60 @@
         <mat-icon>logout</mat-icon>
         Logout
     </button>
-    <button 
-        mat-button 
-        class="action-btn"
-        [routerLink]="['/dashboard']"
-        [queryParams]="{state: 'dashboard'}"
-    >
-        <mat-icon>code</mat-icon>
-        User Dashboard
-    </button>
+    <div *ngIf="state == 'portfolio'">
+        <button 
+            mat-button 
+            class="action-btn"
+            [routerLink]="['/dashboard']"
+        >
+            <mat-icon>code</mat-icon>
+            User Dashboard
+        </button>
+        <button 
+            mat-button 
+            class="action-btn"
+            [routerLink]="['/courses']"
+        >
+            <mat-icon>code</mat-icon>
+            Courses
+        </button>
+    </div>
+    <div *ngIf="state == 'courses'">
+        <button 
+            mat-button 
+            class="action-btn"
+            [routerLink]="['/dashboard']"
+        >
+            <mat-icon>code</mat-icon>
+            User Dashboard
+        </button>
+        <button 
+            mat-button 
+            class="action-btn"
+            [routerLink]="['/portfolio']"
+        >
+            <mat-icon>code</mat-icon>
+            Portfolio
+        </button>
+    </div>
+    <div *ngIf="state == 'dashboard'">
+        <button 
+            mat-button 
+            class="action-btn"
+            [routerLink]="['/portfolio']"
+        >
+            <mat-icon>code</mat-icon>
+            Portfolio
+        </button>
+        <button 
+            mat-button 
+            class="action-btn"
+            [routerLink]="['/courses']"
+        >
+            <mat-icon>code</mat-icon>
+            Courses
+        </button>
+    </div>
 </div>
 <div *ngIf="!isAuthenticated">
     <button 

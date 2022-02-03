@@ -1,0 +1,21 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title matTooltip="{{data.data.description}}">
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                    {{data.data.name}}
+                </div>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div *ngFor="let child of data.data.children">
+            <mat-list-item matTooltip="child.description">
+                <a
+                    matLine
+                    [routerLink]="[child.link, child.id]"
+                >
+                    {{child.name}}
+                </a>
+            </mat-list-item>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
