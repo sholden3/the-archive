@@ -4,6 +4,9 @@ import { PortfolioComponent } from './portfolio.component';
 import { PortfolioRoutingModule } from './portfolio-routing.module';
 import { MaterialModule } from '../modules/material/material.module';
 import { UiElementsModule } from '../ui-elements/ui-elements.module';
+import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -14,7 +17,10 @@ import { UiElementsModule } from '../ui-elements/ui-elements.module';
   imports: [
     PortfolioRoutingModule,
     MaterialModule,
-    UiElementsModule
+    FormsModule,
+    FlexLayoutModule,
+    UiElementsModule,
+    ComponentsModule
   ]
 })
 export class PortfolioModule { }

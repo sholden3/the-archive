@@ -22,6 +22,16 @@ export class Portfolio {
                             description: 'A little about me.'
                         },
                         []
+                    ),
+                    new Content(
+                        this.contentFactory.returnComponent('single-link'),
+                        {
+                            link: 'portfolio',
+                            id: '3154dfs',
+                            name: 'Aboutthe site',
+                            description: 'A little about the site.'
+                        },
+                        []
                     )
                 ]
             )

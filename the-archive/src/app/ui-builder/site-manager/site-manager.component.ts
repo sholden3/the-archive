@@ -10,7 +10,6 @@ export class SiteManagerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("in dash");
   }
 
 }

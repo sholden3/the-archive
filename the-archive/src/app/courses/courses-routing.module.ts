@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoursesComponent } from './courses.component';
 import { RouterModule, Routes } from '@angular/router';
+import { MainContentComponent } from '../content-wrapper/main-content/main-content.component';
 
 const routes: Routes = [
-  {path: '', component: CoursesComponent, children: [
-    {path: ':id', component: CoursesComponent}
-  ]}
+  {path: '', component: CoursesComponent},
+  {path: ':id', component: MainContentComponent}
 ];
 
 @NgModule({

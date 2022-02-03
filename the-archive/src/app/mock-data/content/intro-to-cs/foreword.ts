@@ -18,7 +18,7 @@ export class Foreword {
                     new Content(
                         this.contentFactory.returnComponent('h1'),
                         {
-                            body: "A Quick Foreward",
+                            body: "A Quick Foreword",
                             devMode: false
                         },
                         []
