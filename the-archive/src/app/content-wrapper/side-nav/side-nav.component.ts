@@ -51,7 +51,11 @@ export class SideNavComponent implements OnInit, AfterViewChecked {
 
     this.directoryService.directory.subscribe((data) => {
       this.directory = data;
-    })
+    });
+
+    this.stateService.getState().subscribe((data) => {
+      this.state = data;
+    });
   }
 
   ngAfterViewChecked() {

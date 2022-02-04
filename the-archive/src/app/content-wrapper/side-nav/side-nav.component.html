@@ -5,6 +5,10 @@
         [opened]="!isScreenSmall"
         [mode]="!isScreenSmall ? 'side' : 'over'"
     >
+        <mat-toolbar
+            color="primary">
+            {{state | uppercase}}
+        </mat-toolbar>
         <ng-template #recursiveList let-list>
             <mat-nav-list>
                 <div *ngFor="let item of directory">
