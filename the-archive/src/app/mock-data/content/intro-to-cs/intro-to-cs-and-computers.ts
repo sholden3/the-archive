@@ -385,7 +385,7 @@ export class IntroToCsAndComputers {
                             devMode: false
                         },
                         []
-                    ),
+                    )
                 ]
             ),
         ]

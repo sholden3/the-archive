@@ -17,6 +17,10 @@ import { RouterModule } from '@angular/router';
 import { DropdownLinksComponent } from './side-nav/dropdown-links/dropdown-links.component';
 import { ListContainerComponent } from './side-nav/list-container/list-container.component';
 import { OverlayModule } from "@angular/cdk/overlay";
+import { DialogDirective } from './Directives/dialog/dialog.directive';
+import { DialogContainerComponent } from './dialog/dialog-container/dialog-container.component';
+import { DragDropComponent } from './side-nav/drag-drop/drag-drop.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,10 @@ import { OverlayModule } from "@angular/cdk/overlay";
     ListComponent,
     SingleLinkComponent,
     DropdownLinksComponent,
-    ListContainerComponent
+    ListContainerComponent,
+    DialogDirective,
+    DialogContainerComponent,
+    DragDropComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +47,7 @@ import { OverlayModule } from "@angular/cdk/overlay";
     HighlightModule,
     ReactiveFormsModule,
     RouterModule,
+    DragDropModule,
     OverlayModule
   ],
   exports: [

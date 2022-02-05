@@ -32,16 +32,12 @@ export class ChartDirective implements OnInit {
     
     circles.enter().append("circle")
       .attr('cx', (d, i) => {
-          console.log("Item: " + d, "Index: " + i);
           return d * i;
         })
       .attr('cy', (d, i) => {
-        console.log("Item: " + d);
         return d * (i  / 3);
       })
-      .attr("r", (d) => {
-        return d / 2;
-      })
-      .attr("fill", "red")
+      .attr("r", (d) => d / 2)
+      .attr("fill", "red");
   }
 }

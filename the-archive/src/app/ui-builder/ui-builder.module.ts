@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../modules/material/material.module';
 import { UiBuilderComponent } from './ui-builder.component';
 import { UiBuilderRoutingModule } from './ui-builder-routing.module';
+import { UiElementsModule } from '../ui-elements/ui-elements.module';
 
 
 
@@ -17,7 +18,8 @@ import { UiBuilderRoutingModule } from './ui-builder-routing.module';
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    UiBuilderRoutingModule
+    UiBuilderRoutingModule,
+    UiElementsModule
   ],
   exports: [
     UiBuilderComponent

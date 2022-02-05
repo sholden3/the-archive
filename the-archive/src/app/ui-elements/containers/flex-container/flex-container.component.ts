@@ -26,6 +26,8 @@ export class FlexContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadComponent();
+    console.log(this.appContainer.viewContainerRef.length);
+    console.log(this.appContainer.viewContainerRef);
   }
 
   loadComponent() {

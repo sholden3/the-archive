@@ -1,3 +1,12 @@
-<div>
-    Yo, you want to make stuff? Well, you can mess around with that here, though unless you have authorization, you can't save my dude. My bad, I hope I didn't dash your hopes.
+<div
+    [ngClass]="{'starter-container': canvasItems.length == 0}"
+    cdkDropList
+    id="editor"
+    #matContent="cdkDropList"
+    #element
+    [cdkDropListData]="[canvasItems]"
+    cdkDropListConnectedTo="sideNav"
+    (cdkDropListDropped)="drop($event)"
+>
+
 </div>

@@ -1,0 +1,22 @@
+<div
+    cdkDropList
+    id="sideNav"
+    cdkDropListConnectedTo="editor"
+    [cdkDropListData]="[navBar]"
+>
+    <div 
+        fxLayout="row"
+        *ngFor="let item of data.data.items"
+    >
+        <mat-list-item
+            matTooltip="{{item.description}}"
+        >
+            <div fxFlex fxLayoutAlign="start">
+                <mat-icon>{{item.icon}}</mat-icon>
+            </div>
+            <div fxFlex fxLayoutAlign="end">
+                <div cdkDrag>{{item.label}}</div>
+            </div>
+        </mat-list-item>
+    </div>
+</div>
