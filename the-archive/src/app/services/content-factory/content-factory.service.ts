@@ -50,6 +50,7 @@ export class ContentFactoryService {
     const factory =ngModule.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainerRef.createComponent(factory);
     componentRef.instance.data = content;
+    return componentRef;
   }
 
   resolveComponentForTesting(component: Type<any>, viewContainerRef: ViewContainerRef, data: any) {
@@ -57,17 +58,17 @@ export class ContentFactoryService {
     const ngModule = ngModuleFactory.create(viewContainerRef.injector);
     const factory = ngModule.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = factory.create(this.injector);
-    componentRef.instance.data = {
-      data: {
-        devMode: true,
-        contentFactoryService: ContentFactoryService,
-        componentRef: componentRef,
-        id: data.id
-      }
-    }
+    // componentRef.instance.data = {
+    //   data: {
+    //     devMode: true,
+    //     contentFactoryService: ContentFactoryService,
+    //     componentRef: componentRef,
+    //     id: data.id
+    //   }
+    // }
     this.appRef.attachView(componentRef.hostView);
-   const domElem = (componentRef.hostView as EmbeddedViewRef<any>)
-      .rootNodes[0] as HTMLElement;
-    return domElem;
+  //  const domElem = (componentRef.hostView as EmbeddedViewRef<any>)
+  //     .rootNodes[0] as HTMLElement;
+    return componentRef;
   }
 }

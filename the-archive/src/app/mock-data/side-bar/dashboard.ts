@@ -30,15 +30,9 @@ export class Dashboard {
                                     component: ParagraphComponent,
                                     description: 'a basic paragraph element'
                                 }, {
-                                    label: "code",
-                                    icon: 'code',
-                                    component: CodeEditorComponent,
-                                    description: 'code layout'
-                                }
-                                , {
                                     label: "flex container",
                                     icon: 'code',
-                                    component: ContainerFlexComponent,
+                                    component: FlexContainerComponent,
                                     description: 'flex container'
                                 }
                             ]

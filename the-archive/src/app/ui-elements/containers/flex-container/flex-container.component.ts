@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, ElementRef, Input, NgZone, OnChanges, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { Content } from 'src/app/models/content/content.model';
 import { ContentFactoryService } from 'src/app/services/content-factory/content-factory.service';
+import { TestService } from 'src/app/services/test/test.service';
 import { ContainerDirective } from '../../Directives/Container/container.directive';
 
 @Component({
@@ -11,19 +12,20 @@ import { ContainerDirective } from '../../Directives/Container/container.directi
 })
 export class FlexContainerComponent implements OnInit {
 
+  // _data: any;
+
   @Input() data: any | null;
   direction: String | null;
   padding: String | null;
   layout: String | null;
-  dataChange: BehaviorSubject<any>;
 
   @ViewChild(ContainerDirective, {static: true}) appContainer!: ContainerDirective;
 
   constructor(
-    private contentFactory: ContentFactoryService,
     private changeDetector: ChangeDetectorRef,
+    private test: TestService,
+    private zone: NgZone
     ) { 
-    this.dataChange = new BehaviorSubject<any>([]);
     this.data = null;
     this.direction = null;
     this.padding = null;
@@ -31,10 +33,14 @@ export class FlexContainerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // console.log(this.data);
+    this.zone.runOutsideAngular(() => {
+      this.test.demoData.subscribe((data) => {
+        console.log(data);
+        this.loadComponent();
+        this.changeDetector.detectChanges();
+      })
+    })
     // this.loadComponent();
-    // console.log(this.appContainer.viewContainerRef.length);
-    // console.log(this.appContainer.viewContainerRef);
   }
 
   loadComponent() {
@@ -42,17 +48,15 @@ export class FlexContainerComponent implements OnInit {
     this.padding = this.data?.data.padding;
     this.layout = this.data?.data.layout;
     const viewContainerRef = this.appContainer.viewContainerRef;
-    // viewContainerRef.clear();
+    viewContainerRef.clear();
     if(this.data!.children) {
       for(let item of this.data!.children) {
-        this.contentFactory.resolveComponent(item, item.component, viewContainerRef, item.data);
+        const componentRef = this.data.data.factory.resolveComponent(item, item.component, viewContainerRef, item.data);
       }
     }
   }
 
-  ngAfterViewChecked() {
-    // console.log(this.data);
-    this.changeDetector.detectChanges();
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes.data);
   }
-
 }

@@ -1,6 +1,9 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ContentFactoryService } from 'src/app/services/content-factory/content-factory.service';
+import { TestService } from 'src/app/services/test/test.service';
 import { DialogContainerComponent } from '../../dialog/dialog-container/dialog-container.component';
+import { ContainerDirective } from '../../Directives/Container/container.directive';
 
 @Component({
   selector: 'app-container-flex',
@@ -21,11 +24,14 @@ export class ContainerFlexComponent implements OnInit {
 
   public canvasItems: any[] = [];
   @Input('sideNav') sideNav: string[];
+  @ViewChild(ContainerDirective, {static: true}) appContainer!: ContainerDirective;
   @ViewChild("element", {static: true}) elementRef: ElementRef | null;
 
   //private contentFactory: ContentFactoryService
   constructor(
-    private dialog: MatDialog
+    private contentFactory: ContentFactoryService,
+    private changeDetector: ChangeDetectorRef,
+    private test: TestService,
   ) { 
     this.data = null;
     this.direction = null;
@@ -36,52 +42,52 @@ export class ContainerFlexComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.devMode = this.data.data.devMode;
-    if(this.devMode) {
-      this.launchDialog();
+    this.loadComponent();
+  }
+
+  loadComponent() {
+    this.direction = this.data?.data.dir;
+    this.padding = this.data?.data.padding;
+    this.layout = this.data?.data.layout;
+    const viewContainerRef = this.appContainer.viewContainerRef;
+    viewContainerRef.clear();
+    if(this.data!.children) {
+      for(let item of this.data!.children) {
+        this.contentFactory.resolveComponent(item, item.component, viewContainerRef, item.data);
+      }
     }
-    // this.loadComponent();
-    // console.log(this.data);
   }
 
-  editElement() {
-    this.launchDialog();
-  }
+  // launchDialog() {
+  //   const dialogConfig = new MatDialogConfig();
+  //   dialogConfig.disableClose = true;
+  //   dialogConfig.data = [
+  //     {
+  //       type: 'paragraph',
+  //       formElements: [
+  //         {
+  //           label: 'styling',
+  //           type: 'dropdown',
+  //           data: [
+  //             'Test1', 'Test2'
+  //           ]
+  //         }, {
+  //           label: 'context',
+  //           type: 'text'
+  //         }
+  //       ]
+  //     }
+  //   ];
 
-  deleteElement() {
-    this.data.data.componentRef.destroy();
-  }
+  //   dialogConfig.width = '450px';
+  //   let dialogRef = this.dialog.open(DialogContainerComponent,dialogConfig);
 
-  launchDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.data = [
-      {
-        type: 'paragraph',
-        formElements: [
-          {
-            label: 'styling',
-            type: 'dropdown',
-            data: [
-              'Test1', 'Test2'
-            ]
-          }, {
-            label: 'context',
-            type: 'text'
-          }
-        ]
-      }
-    ];
-
-    dialogConfig.width = '450px';
-    let dialogRef = this.dialog.open(DialogContainerComponent,dialogConfig);
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
-        this.dataInput = result;
-      }
-    });
-  }
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if(result) {
+  //       this.dataInput = result;
+  //     }
+  //   });
+  // }
 
   // drop(event: any) {
   //   console.log(event);

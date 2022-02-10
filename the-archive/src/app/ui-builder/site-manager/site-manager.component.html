@@ -12,7 +12,7 @@
 </div>
  -->
 
-<!-- <ng-template #tmplNode let-node="node">
+<ng-template #tmplNode let-node="node">
   <div class="node-item" [attr.data-id]="node.id" [attr.id]="'node-'+node.id">
 
     <div>
@@ -48,9 +48,9 @@
     {{node | json}} Test 1
     <ng-container *ngTemplateOutlet="tmplNode,context:{node:node}"></ng-container>
   </div>
-</div> -->
+</div>
 
-<div 
+<!-- <div 
   class="container"
   cdkDropList [cdkDropListData]="nodes"
   [id]="'main'" [cdkDropListConnectedTo]="dropTargetIds"
@@ -58,15 +58,17 @@
   [cdkDropListSortingDisabled]="true"
 >
 <div *ngFor="let item of nodes"
-cdkDrag [cdkDragData]="item.id" (cdkDragMoved)="dragMoved($event)" class="node-item" [attr.data-id]="item.id"
+cdkDrag [cdkDragData]="item.id" 
+class="node-item" [attr.data-id]="item.id"
+(cdkDragMoved)="dragMoved($event)"
 >
   <div style="padding: 10px;">
-    {{item | json}}
-  </div>
+    {{item.id}}
+  </div> -->
   
     <!-- <div *ngIf="item.children.length > 0"> -->
     <!-- </div> -->
-</div>
+<!-- </div> -->
   <!-- <ng-template #recursiveList let-list>
     <div *ngFor="let item of nodes"
     cdkDrag [cdkDragData]="item.id" (cdkDragMoved)="dragMoved($event)" class="node-item" [attr.data-id]="item.id"
@@ -78,17 +80,29 @@ cdkDrag [cdkDragData]="item.id" (cdkDragMoved)="dragMoved($event)" class="node-i
     </div>
   </ng-template>
   <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: nodes }"></ng-container> -->
-</div>
+<!-- </div> -->
 
-<mat-card class="mat-elevation-z10">
-  <mat-card-content>
-          <ng-template #recursiveList let-list>
-              <div *ngFor="let item of nodes">
-                  <div *ngIf="item.children.length > 0">
-                      {{item | json }}
-                      <app-flex-container [data]=item></app-flex-container>
-                  </div>
-              </div>
-          </ng-template>
-          <ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: nodes }"></ng-container>
-  </mat-card-content>
+<!-- <div 
+  class="container"
+  cdkDropList [cdkDropListData]="nodes"
+  [id]="'main'" [cdkDropListConnectedTo]="dropTargetIds"
+  (cdkDropListDropped)="drop($event)"
+  [cdkDropListSortingDisabled]="true"
+>
+<ng-template #recursiveList let-list>
+  <div 
+    *ngFor="let item of nodes"
+    cdkDrag [cdkDragData]="item.id" 
+    class="node-item" [attr.data-id]="item.id"
+    (cdkDragMoved)="dragMoved($event)"
+  >
+    <div style="padding: 10px;">
+      {{item.id}} {{item.component.name}}
+    </div>
+    <div *ngIf="item.children.length > 0">
+        <app-flex-container #element [data]=item></app-flex-container>
+    </div>
+  </div>
+</ng-template>
+<ng-container *ngTemplateOutlet="recursiveList; context:{ $implicit: nodes }"></ng-container>
+</div> -->

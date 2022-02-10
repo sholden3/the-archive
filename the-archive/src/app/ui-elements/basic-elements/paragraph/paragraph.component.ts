@@ -2,8 +2,6 @@ import { Component, ComponentRef, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogContainerComponent } from '../../dialog/dialog-container/dialog-container.component';
 
-import { v4 as uuid } from 'uuid';
-
 @Component({
   selector: 'app-paragraph',
   templateUrl: './paragraph.component.html',
@@ -23,11 +21,10 @@ export class ParagraphComponent implements OnInit {
 
   ngOnInit(): void {
     // this.devMode = this.data.data.devMode;
-    // if(this.devMode) {
-    //   this.launchDialog();
-    // }
-    const id = uuid();
-    this.testData = "Paragraph " + id;
+    this.devMode = false;
+    if(this.devMode) {
+      this.launchDialog();
+    }
   }
 
   editElement() {

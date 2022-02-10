@@ -10,6 +10,7 @@ export class TestService {
 
   private _dropTargetIds: BehaviorSubject<string[]>;
   private _demoData: BehaviorSubject<TreeNode[]>;
+  testNode: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
   private dataStore: {
     dropTargetIds: string[]
@@ -35,14 +36,16 @@ export class TestService {
     this.nodeData.push(nodeToAdd);
     this._demoData.next(this.nodeData);
   }
-  
+
   ids: string[] = [];
+  componentsToAdd: any[] = [];
   nodeData: TreeNode[] = [];
 }
 
 interface TreeNode {
   id: string;
-  component: Type<any>;
   children: TreeNode[];
+  component: any;
+  data: any;
   isExpanded?: boolean;
 }

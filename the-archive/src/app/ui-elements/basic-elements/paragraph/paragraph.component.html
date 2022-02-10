@@ -1,11 +1,11 @@
-<p>
-    {{data.data.id}}
-    Test
-</p>
-<!-- <div id={{data.data.id}}
+<!-- <p>
+    {{data.component.name}}
+    {{data.id}}
+</p> -->
+<div id={{data.data.id}}
 >
     <div>
-        <p *ngIf="this.devMode">{{dataInput}}</p>
+        <p *ngIf="this.devMode" fxFlex fxLayoutAlign="center center">{{dataInput}}</p>
         <p *ngIf="!this.devMode">{{data.data.body}}</p>
     </div>
     <div
@@ -24,4 +24,4 @@
             </button>
         </div>
     </div>
-</div> -->
+</div>
