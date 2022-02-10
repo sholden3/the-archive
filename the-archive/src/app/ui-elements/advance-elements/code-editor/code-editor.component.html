@@ -1,3 +1,30 @@
 <pre>
-    <code [highlight]="data.data.code" [lineNumbers]="true" [languages]="[data.data.language]"></code>
+    <code 
+        *ngIf="this.devMode" 
+        [highlight]="data.data.code" 
+        [lineNumbers]="true" 
+        [languages]="[data.data.language]">
+    </code>
+    <code 
+        *ngIf="!this.devMode" 
+        [highlight]="dataInput" 
+        [lineNumbers]="true" 
+        [languages]="[dataInput]">
+    </code>
 </pre>
+<div
+    *ngIf="this.devMode"
+    class="flex-container" 
+    fxLayout="row"
+>
+    <div fxFlex fxLayoutAlign="start center">
+        <button mat-button color="accent" (click)="editElement()">
+            <mat-icon>first_page</mat-icon> Edit
+        </button>
+    </div>
+    <div fxFlex fxLayoutAlign="end center">
+        <button mat-button color="accent" (click)="deleteElement()">
+            Delete <mat-icon>last_page</mat-icon>
+        </button>
+    </div>
+</div>

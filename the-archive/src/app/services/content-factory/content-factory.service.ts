@@ -1,5 +1,6 @@
-import { ApplicationRef, Compiler, ComponentFactoryResolver, EmbeddedViewRef, Injectable, Injector, Type, ViewContainerRef } from '@angular/core';
+import { ApplicationRef, Compiler, ComponentFactoryResolver, EmbeddedViewRef, Injectable, Injector, NgModuleRef, Type, ViewContainerRef } from '@angular/core';
 import { CodeEditorComponent } from 'src/app/ui-elements/advance-elements/code-editor/code-editor.component';
+import { ContainerFlexComponent } from 'src/app/ui-elements/basic-containers/container-flex/container-flex.component';
 import { HeaderH1Component } from 'src/app/ui-elements/basic-elements/header-h1/header-h1.component';
 import { HeaderH2Component } from 'src/app/ui-elements/basic-elements/header-h2/header-h2.component';
 import { HeaderH3Component } from 'src/app/ui-elements/basic-elements/header-h3/header-h3.component';
@@ -36,6 +37,7 @@ export class ContentFactoryService {
       this.cmps.set('dropdown-links', DropdownLinksComponent);
       this.cmps.set('nav-list', ListContainerComponent);
       this.cmps.set('drag-drop', DragDropComponent);
+      this.cmps.set('container-flex', ContainerFlexComponent);
   }
 
   returnComponent(componentType: string): Type<any> {
@@ -47,37 +49,25 @@ export class ContentFactoryService {
     const ngModule = ngModuleFactory.create(viewContainerRef.injector);
     const factory =ngModule.componentFactoryResolver.resolveComponentFactory(component);
     const componentRef = viewContainerRef.createComponent(factory);
-    console.log(viewContainerRef);
     componentRef.instance.data = content;
-    // const entityComp = this.componentFactoryResolver.resolveComponentFactory(component);
-    // console.log(entityComp);
-    // const componentRef = viewContainerRef.createComponent(entityComp);
-    // console.log(componentRef);
-    // componentRef.instance.data = content
   }
 
-  resolveComponentForTesting(component: Type<any>, viewContainerRef: ViewContainerRef, node: any, index: number) {
+  resolveComponentForTesting(component: Type<any>, viewContainerRef: ViewContainerRef, data: any) {
     const ngModuleFactory = this.compiler.compileModuleSync(UiElementsModule);
     const ngModule = ngModuleFactory.create(viewContainerRef.injector);
     const factory = ngModule.componentFactoryResolver.resolveComponentFactory(component);
-    console.log(factory);
-    //const componentRef = factory.create(this.injector, [], node);
     const componentRef = factory.create(this.injector);
+    componentRef.instance.data = {
+      data: {
+        devMode: true,
+        contentFactoryService: ContentFactoryService,
+        componentRef: componentRef,
+        id: data.id
+      }
+    }
     this.appRef.attachView(componentRef.hostView);
-
    const domElem = (componentRef.hostView as EmbeddedViewRef<any>)
       .rootNodes[0] as HTMLElement;
-
     return domElem;
-    // console.log(domElem);
-
-    // node.nativeElement.appendChildNode(domElem);
-
-    //const componentRef = viewContainerRef.createComponent(factory, index);
-    // const entityComp = this.componentFactoryResolver.resolveComponentFactory(component);
-    // const componentRef = viewContainerRef.createComponent(entityComp);
-    // const componentRef = viewContainerRef.createComponent(entityComp);
-    // console.log(componentRef);
-    // componentRef.instance.data = content
   }
 }

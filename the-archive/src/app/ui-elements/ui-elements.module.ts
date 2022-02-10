@@ -21,6 +21,7 @@ import { DialogDirective } from './Directives/dialog/dialog.directive';
 import { DialogContainerComponent } from './dialog/dialog-container/dialog-container.component';
 import { DragDropComponent } from './side-nav/drag-drop/drag-drop.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ContainerFlexComponent } from './basic-containers/container-flex/container-flex.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     ListContainerComponent,
     DialogDirective,
     DialogContainerComponent,
-    DragDropComponent
+    DragDropComponent,
+    ContainerFlexComponent
   ],
   imports: [
     CommonModule,

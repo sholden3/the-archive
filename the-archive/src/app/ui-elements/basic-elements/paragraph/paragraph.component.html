@@ -1,4 +1,27 @@
-<div>
-    <!-- <p>{{data.data.body}}</p> -->
-    <p>{{data}}</p>
-</div>
+<p>
+    {{data.data.id}}
+    Test
+</p>
+<!-- <div id={{data.data.id}}
+>
+    <div>
+        <p *ngIf="this.devMode">{{dataInput}}</p>
+        <p *ngIf="!this.devMode">{{data.data.body}}</p>
+    </div>
+    <div
+        *ngIf="this.devMode"
+        class="flex-container" 
+        fxLayout="row"
+    >
+        <div fxFlex fxLayoutAlign="start center">
+            <button mat-button color="accent" (click)="editElement()">
+                <mat-icon>first_page</mat-icon> Edit
+            </button>
+        </div>
+        <div fxFlex fxLayoutAlign="end center">
+            <button mat-button color="accent" (click)="deleteElement()">
+                Delete <mat-icon>last_page</mat-icon>
+            </button>
+        </div>
+    </div>
+</div> -->

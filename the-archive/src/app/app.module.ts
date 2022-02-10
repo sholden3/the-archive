@@ -11,6 +11,7 @@ import { OktaAuthModule, OKTA_CONFIG } from '@okta/okta-angular';
 import config from './config/config';
 import { Router } from '@angular/router';
 import { OktaAuth } from '@okta/okta-auth-js';
+import { MaterialModule } from './modules/material/material.module';
 
 const oktaConfig = Object.assign({
   onAuthRequired: (oktaAuth: any, injector: any) => { // Need to add one more param to handle Activated link middleware

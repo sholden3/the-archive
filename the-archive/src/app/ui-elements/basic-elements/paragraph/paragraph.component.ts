@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ComponentRef, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogContainerComponent } from '../../dialog/dialog-container/dialog-container.component';
+
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-paragraph',
@@ -9,14 +11,34 @@ import { DialogContainerComponent } from '../../dialog/dialog-container/dialog-c
 })
 export class ParagraphComponent implements OnInit {
 
-  //@Input() data: any;
-  data: any;
+  @Input() data: any;
+  dataInput: any;
+
+  devMode: boolean = false;
+  testData: string = '';
 
   constructor(
     private dialog: MatDialog
     ) { }
 
   ngOnInit(): void {
+    // this.devMode = this.data.data.devMode;
+    // if(this.devMode) {
+    //   this.launchDialog();
+    // }
+    const id = uuid();
+    this.testData = "Paragraph " + id;
+  }
+
+  editElement() {
+    this.launchDialog();
+  }
+
+  deleteElement() {
+    this.data.data.componentRef.destroy();
+  }
+
+  launchDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.data = [
@@ -42,9 +64,8 @@ export class ParagraphComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
-        this.data = result;
+        this.dataInput = result;
       }
     });
   }
-
 }
